@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap');
 @import 'reset.css';
 
 body {
@@ -5,4 +6,107 @@ body {
   color: #fff;
   height: 100%;
   width: 100%;
+  margin: 10px 0 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 190px);
+  grid-template-rows: repeat(auto-fill, 400px);
+  grid-gap: 40px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  overflow-x: hidden;
+  font-family: 'Major Mono Display', monospace;
+  text-transform: lowercase;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.card__planet::before {
+  content: '';
+  position: absolute;
+  height: 190px;
+  z-index: -2;
+  left: 50%;
+  top: 0%;
+  border-left: 1px dashed rgba(255, 255, 255, 0.25);
+  transform: rotate(var(--planet-tilt-var)) scale(1.2);
+  border-color: var(--planet-color-var);
+  color: var(--planet-color-var);
+}
+
+.planet__atmosphere {
+  height: 190px;
+  width: 190px;
+  position: relative;
+  background: radial-gradient(
+    circle at 30% 50%,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 65%
+  );
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.planet__surface {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-size: cover;
+}
+
+.card__sun .planet__atmosphere {
+  box-shadow: 0px 0px 10px 0px #cc9f4c, 0px 0px 1000px -2px #cc9f4c !important;
+}
+
+.card__info {
+  width: 100%;
+}
+
+.info__title {
+  text-align: center;
+  font-size: 28px;
+  margin: 0.83em 0px;
+  font-weight: bold;
+}
+
+.info__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.info__item {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.info__item .tilt__icon {
+  margin: 0 5px;
+}
+
+.info__label {
+  font-size: 11px;
+}
+
+.info__line {
+  flex: 1;
+  margin: 0 5px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+@keyframes planetRotate {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
 }
